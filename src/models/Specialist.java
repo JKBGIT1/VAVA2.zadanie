@@ -6,17 +6,26 @@ public class Specialist {
     private String name;
     private double dayPrice;
     private int yearsExperience;
-    private String education;
     private String type;
     private boolean hired;
+    private ObservableList<String> education;
     private ObservableList<String> certificates;
 
-    public Specialist(String name, double dayPrice, int yearsExperience, String type) {
+    public Specialist(
+            String name,
+            double dayPrice,
+            int yearsExperience,
+            String type,
+            ObservableList<String> education,
+            ObservableList<String> certificates
+    ) {
         this.name = name;
         this.dayPrice = dayPrice;
         this.yearsExperience = yearsExperience;
         this.type = type;
-        this.hired = false;
+        this.education = education;
+        this.certificates = certificates;
+        this.hired = false; // By default
     }
 
     public String getName() {
@@ -43,14 +52,6 @@ public class Specialist {
         this.yearsExperience = yearsExperience;
     }
 
-    public String getEducation() {
-        return education;
-    }
-
-    public void setEducation(String education) {
-        this.education = education;
-    }
-
     public String getType() {
         return type;
     }
@@ -65,6 +66,14 @@ public class Specialist {
 
     public void setHired(boolean hired) {
         this.hired = hired;
+    }
+
+    public ObservableList<String> getEducation() {
+        return education;
+    }
+
+    public void setEducation(ObservableList<String> education) {
+        this.education = education;
     }
 
     public ObservableList<String> getCertificates() {

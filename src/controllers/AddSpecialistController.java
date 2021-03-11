@@ -97,17 +97,24 @@ public class AddSpecialistController extends HomepageController implements Initi
                 String specialistName = tfName.getText();
                 double specialistPrice = this.convertStringToDouble(tfPrice.getText());
                 int specialistExperience = Integer.parseInt(tfExperience.getText());
+                ObservableList<String> educationList = FXCollections.observableArrayList();
+                ObservableList<String> certificatesList = FXCollections.observableArrayList();
+
+                if (this.getSpecialist() != null) {
+                    educationList = this.getSpecialist().getEducation();
+                    certificatesList = this.getSpecialist().getCertificates();
+                }
 
                 switch (selectedSpecialist) {
                     case PROGRAMMER:
-                        setSpecialistAsProgrammer(specialistName, specialistPrice, specialistExperience);
+                        setSpecialistAsProgrammer(specialistName, specialistPrice, specialistExperience, educationList, certificatesList);
                         break;
                     case ADMINISTRATOR:
-                        setSpecialistAsAdministrator(specialistName, specialistPrice, specialistExperience);
+                        setSpecialistAsAdministrator(specialistName, specialistPrice, specialistExperience, educationList, certificatesList);
                         setAdministratorComboBoxes();
                         break;
                     case SECURITY_CONSULTANT:
-                        setSpecialistAsConsultant(specialistName, specialistPrice, specialistExperience);
+                        setSpecialistAsConsultant(specialistName, specialistPrice, specialistExperience, educationList, certificatesList);
                         break;
                 }
 
@@ -121,33 +128,46 @@ public class AddSpecialistController extends HomepageController implements Initi
                 ));
                 this.switchScene(event);
             } catch (Exception e) {
-                this.showErrorPopUp("Error", "All text fields need to be filled and check entered types.");
+                this.showErrorPopUp("Error", "All text fields have to be filled and check entered types.");
                 e.printStackTrace();
             }
         }
     }
 
-    private void setSpecialistAsProgrammer(String name, double price, int experience) {
+    /**
+     * Creating specific type of specialist, when going to the next step of creation.
+     * @param name
+     * @param price
+     * @param experience
+     * @param educationList
+     * @param experienceList
+     */
+
+    private void setSpecialistAsProgrammer(String name, double price, int experience, ObservableList<String> educationList, ObservableList<String> experienceList) {
         String selectedDevice = deviceComboBox.getSelectionModel().getSelectedItem();
-        this.setSpecialist(new Programmer(name, price, experience, PROGRAMMER, selectedDevice));
+        this.setSpecialist(new Programmer(name, price, experience, PROGRAMMER, educationList, experienceList, selectedDevice));
     }
 
-    private void setSpecialistAsAdministrator(String name, double price, int experience) {
+    private void setSpecialistAsAdministrator(String name, double price, int experience, ObservableList<String> educationList, ObservableList<String> experienceList) {
         String selectedDevice = deviceComboBox.getSelectionModel().getSelectedItem();
         String platform = tfPreferredPlatform.getText();
 
-        this.setSpecialist(new Administrator(name, price, experience, ADMINISTRATOR, selectedDevice, platform));
+        this.setSpecialist(new Administrator(name, price, experience, ADMINISTRATOR, educationList, experienceList, selectedDevice, platform));
     }
 
-    private void setSpecialistAsConsultant(String name, double price, int experience) {
+    private void setSpecialistAsConsultant(String name, double price, int experience, ObservableList<String> educationList, ObservableList<String> experienceList) {
         String selectedCyberSecurity = securityConsultantComboBox.getSelectionModel().getSelectedItem();
 
         if (selectedCyberSecurity != null && selectedCyberSecurity.equals("Yes")) {
-            this.setSpecialist(new SecurityConsultant(name, price, experience, SECURITY_CONSULTANT, true));
+            this.setSpecialist(new SecurityConsultant(name, price, experience, SECURITY_CONSULTANT, educationList, experienceList, true));
         } else {
-            this.setSpecialist(new SecurityConsultant(name, price, experience, SECURITY_CONSULTANT, false));
+            this.setSpecialist(new SecurityConsultant(name, price, experience, SECURITY_CONSULTANT, educationList, experienceList, false));
         }
     }
+
+    /*
+     * End of creating specific type of specialist
+     */
 
     public void getSelectedSpecialist() {
         String selectedSpecialist = specialistTypeComboBox.getSelectionModel().getSelectedItem();

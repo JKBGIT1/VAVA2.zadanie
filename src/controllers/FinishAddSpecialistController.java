@@ -33,14 +33,17 @@ public class FinishAddSpecialistController extends AddSpecialistController imple
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        educationListView.setItems(this.getSpecialist().getEducation());
+        certificatesListView.setItems(this.getSpecialist().getCertificates());
     }
 
     public void addEducation() {
         if (tfEducation.getText().equals("")) { // Need to write some education before adding to listview
-
+            this.showErrorPopUp("Enter education", "Enter education in the text field under Education table.");
         } else {
-            educationListView.getItems().add(tfEducation.getText());
+            String enteredEducation = tfEducation.getText();
+
+            this.getSpecialist().getEducation().add(enteredEducation); // education will be automatically added to listView
             tfEducation.setText("");
         }
     }
@@ -49,17 +52,21 @@ public class FinishAddSpecialistController extends AddSpecialistController imple
         int selectedEducation = educationListView.getSelectionModel().getSelectedIndex();
 
         if (selectedEducation == -1) { // No education is selected
-
-        } else { // Remove education from listview
-            educationListView.getItems().remove(selectedEducation);
+            this.showErrorPopUp("Select from Education table", "Select education, which you want to remove");
+        } else {
+            // deleting from ObservableList based on index
+            // education will be automatically removed from listview
+            this.getSpecialist().getEducation().remove(selectedEducation);
         }
     }
 
     public void addCertificate() {
         if (tfCertificate.getText().equals("")) { // Need to write some education before adding to listview
-
+            this.showErrorPopUp("Enter certificate", "Enter certificate in the text field under Certificates table.");
         } else {
-            certificatesListView.getItems().add(tfCertificate.getText());
+            String enteredCertificate = tfCertificate.getText();
+
+            this.getSpecialist().getCertificates().add(enteredCertificate); // certificate will be automatically added to listView
             tfCertificate.setText("");
         }
     }
@@ -68,13 +75,17 @@ public class FinishAddSpecialistController extends AddSpecialistController imple
         int selectedCertificate = certificatesListView.getSelectionModel().getSelectedIndex();
 
         if (selectedCertificate == -1) { // No education is selected
-
-        } else { // Remove education from listview
-            certificatesListView.getItems().remove(selectedCertificate);
+            this.showErrorPopUp("Select from Certificates table", "Select certificate, which you want to remove");
+        } else {
+            // deleting from ObservableList based on index
+            // certificate will be automatically removed from listview
+            this.getSpecialist().getCertificates().remove(selectedCertificate);
         }
     }
 
     public void createSpecialist(MouseEvent event) {
+        // add created specialist to ObservableList of Specialist before switching scene
+        this.getSpecialistObservableList().add(this.getSpecialist());
         this.specialistsScene(event);
     }
 

@@ -1,10 +1,20 @@
 package models;
 
+import javafx.collections.ObservableList;
+
 public class SecurityConsultant extends Specialist {
     private boolean cyberSecurity;
 
-    public SecurityConsultant(String name, double dayPrice, int yearsExperience, String type, boolean cyberSecurity) {
-        super(name, dayPrice, yearsExperience, type);
+    public SecurityConsultant(
+            String name,
+            double dayPrice,
+            int yearsExperience,
+            String type,
+            ObservableList<String> education,
+            ObservableList<String> certificates,
+            boolean cyberSecurity
+    ) {
+        super(name, dayPrice, yearsExperience, type, education, certificates);
         this.cyberSecurity = cyberSecurity;
     }
 
