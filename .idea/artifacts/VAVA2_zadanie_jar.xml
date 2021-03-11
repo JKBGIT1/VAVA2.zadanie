@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="VAVA2.zadanie:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/VAVA2_zadanie_jar</output-path>
+    <root id="archive" name="VAVA2.zadanie.jar">
+      <element id="module-output" name="VAVA2.zadanie" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../Program Files/Java/jdk1.8.0_281/jfoenix-8.0.10.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
