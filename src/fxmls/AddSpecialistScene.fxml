@@ -147,7 +147,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="39.0" prefWidth="310.0">
+                        <TextField fx:id="tfName" prefHeight="39.0" prefWidth="310.0">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -164,7 +164,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField>
+                        <TextField fx:id="tfPrice">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -184,7 +184,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField>
+                        <TextField fx:id="tfExperience">
                            <font>
                               <Font size="18.0" />
                            </font>

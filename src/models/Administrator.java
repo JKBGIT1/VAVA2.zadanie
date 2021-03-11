@@ -1,13 +1,25 @@
 package models;
 
 public class Administrator extends Programmer {
-    private String preferedPlatform;
+    private String preferredPlatform;
 
-    public String getPreferedPlatform() {
-        return preferedPlatform;
+    public Administrator(
+            String name,
+            double dayPrice,
+            int yearsExperience,
+            String type,
+            String device,
+            String preferredPlatform
+    ) {
+        super(name, dayPrice, yearsExperience, type, device);
+        this.preferredPlatform = preferredPlatform;
     }
 
-    public void setPreferedPlatform(String preferedPlatform) {
-        this.preferedPlatform = preferedPlatform;
+    public String getPreferredPlatform() {
+        return preferredPlatform;
+    }
+
+    public void setPreferredPlatform(String preferredPlatform) {
+        this.preferredPlatform = preferredPlatform;
     }
 }

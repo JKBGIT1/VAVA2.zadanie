@@ -11,6 +11,14 @@ public class Specialist {
     private boolean hired;
     private ObservableList<String> certificates;
 
+    public Specialist(String name, double dayPrice, int yearsExperience, String type) {
+        this.name = name;
+        this.dayPrice = dayPrice;
+        this.yearsExperience = yearsExperience;
+        this.type = type;
+        this.hired = false;
+    }
+
     public String getName() {
         return name;
     }

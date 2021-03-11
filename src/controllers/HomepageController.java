@@ -6,14 +6,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import models.Employer;
 import models.HiredRecord;
 import models.Job;
 import models.Specialist;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Optional;
 
 public class HomepageController {
 
@@ -128,10 +137,6 @@ public class HomepageController {
         System.exit(0);
     }
 
-    /**
-     * End of methods for setting controller and scenePath when switching between scenes.
-     */
-
     // When scenePath and controller is set program is going to change a scene on the screen
     public void switchScene(MouseEvent event) {
         try {
@@ -154,5 +159,120 @@ public class HomepageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * End of methods for setting controller and scenePath when switching between scenes.
+     */
+
+    /**
+     * Converting methods
+     */
+
+    // NOTE: This function needs to be used inside try and catch
+    public double convertStringToDouble(String stringNumber) {
+        // Before parse replace commas with dots to prevent error
+        double doubleNumber = Double.parseDouble(stringNumber.replaceAll(",","."));
+
+        // If user didn't use zero as an input then we floor this number on two decimals
+        if (doubleNumber != 0) {
+            doubleNumber = Math.floor(doubleNumber * 100) / 100; // Taken from https://stackoverflow.com/questions/7747469/how-can-i-truncate-a-double-to-only-two-decimal-places-in-java
+        }
+        return doubleNumber;
+    }
+
+    // NOTE: This function needs to be used inside try and catch
+    public String convertDateToString(Date date) {
+        // Inspiration from https://www.javatpoint.com/java-date-to-string
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        return dateFormat.format(date);
+    }
+
+    // NOTE: This function needs to be used inside try and catch
+    public String convertDoubleToString(double price) {
+        return String.valueOf(price);
+    }
+
+    public Date convertStringToDate(String stringDate) {
+        try {
+            // Try to handle more types of date format
+            stringDate = stringDate.replaceAll("/", ".");
+            stringDate = stringDate.replaceAll("-", ".");
+            stringDate = stringDate.replaceAll(",", ".");
+
+            Date date = new SimpleDateFormat("dd.MM.yyyy").parse(stringDate); // Inspiration from https://www.javatpoint.com/java-string-to-date
+            return date;
+        } catch (ParseException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return null;
+    }
+
+    /**
+     * End of Converting methods
+     */
+
+    /**
+     * Start of PopUps
+     */
+
+    // Inspiration for PopUp windows on https://stackoverflow.com/questions/26341152/controlsfx-dialogs-deprecated-for-what/32618003#32618003
+    public void showSuccessPopUp(String headerText, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.setTitle("Information");
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+
+        alert.showAndWait();
+    }
+
+    public void showErrorPopUp(String headerText, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.setTitle("Error");
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+
+        alert.showAndWait();
+    }
+
+    public int showInputDialog(String contentText) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.initStyle(StageStyle.UTILITY);
+        dialog.setTitle("Fill text field");
+        dialog.setHeaderText("INPUT");
+        dialog.setContentText(contentText);
+
+        Optional<String> result = dialog.showAndWait();
+
+        if (result.isPresent()) {
+            try {
+                return Integer.parseInt(result.get());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        return 1; // Default value will be 1, if user didn't enter int.
+    }
+
+    public boolean showConfirmationPopUp(String headerText, String contentText ) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.setTitle("Choose an option");
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent()) {
+            // If condition under this comment is true, user confirm action.
+            if (result.get().getText().equals("OK")) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
