@@ -74,6 +74,10 @@ public class FinishAddSpecialistController extends AddSpecialistController imple
         }
     }
 
+    public void createSpecialist(MouseEvent event) {
+        this.specialistsScene(event);
+    }
+
     public void addSpecialistScene(MouseEvent event) {
         this.setScenePath(ADD_SPECIALIST_SCENE);
         this.setController(new AddSpecialistController(

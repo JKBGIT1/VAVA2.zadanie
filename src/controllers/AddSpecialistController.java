@@ -27,7 +27,7 @@ public class AddSpecialistController extends HomepageController implements Initi
     @FXML
     ComboBox<String> securityConsultantComboBox = new ComboBox<String>();
     @FXML
-    TextField tfPreferredPlatform;
+    TextField tfName, tfPrice, tfExperience, tfPreferredPlatform;
 
     private Specialist specialist;
 
@@ -53,7 +53,18 @@ public class AddSpecialistController extends HomepageController implements Initi
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (this.getSpecialist() != null) {
-            
+            String specialistType = this.getSpecialist().getType();
+            if (specialistType.equals(PROGRAMMER)) {
+
+            } else if (specialistType.equals(ADMINISTRATOR)) {
+
+            } else if (specialistType.equals(SECURITY_CONSULTANT)) {
+
+            }
+
+            tfName.setText(this.getSpecialist().getName());
+            tfPrice.setText(String.valueOf(this.getSpecialist().getDayPrice()));
+            tfExperience.setText(String.valueOf(this.getSpecialist().getYearsExperience()));
         }
 
         specialistTypeComboBox.setItems(FXCollections.observableArrayList(

@@ -7,6 +7,8 @@ public class Specialist {
     private double dayPrice;
     private int yearsExperience;
     private String education;
+    private String type;
+    private boolean hired;
     private ObservableList<String> certificates;
 
     public String getName() {
@@ -39,6 +41,22 @@ public class Specialist {
 
     public void setEducation(String education) {
         this.education = education;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public boolean isHired() {
+        return hired;
+    }
+
+    public void setHired(boolean hired) {
+        this.hired = hired;
     }
 
     public ObservableList<String> getCertificates() {
