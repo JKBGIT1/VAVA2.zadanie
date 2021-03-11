@@ -91,7 +91,7 @@ public class AddSpecialistController extends HomepageController implements Initi
     public void finishAddSpecialist(MouseEvent event) {
         String selectedSpecialist = specialistTypeComboBox.getSelectionModel().getSelectedItem();
         if (selectedSpecialist == null) { // Need to select specialist type
-            System.out.println("SELECT SPECIALIST TYPE");
+            this.showErrorPopUp("No type selected", "You need to select specialist type.");
         } else {
             try {
                 String specialistName = tfName.getText();

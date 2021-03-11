@@ -1,6 +1,5 @@
 package controllers;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -31,13 +30,15 @@ public class HomepageController {
     public static final String ADD_SPECIALIST_SCENE = "/fxmls/AddSpecialistScene.fxml";
     public static final String FINISH_ADD_SPECIALIST_SCENE = "/fxmls/FinishAddSpecialistScene.fxml";
 
+    public static final String EMPLOYERS_SCENE = "/fxmls/EmployersScene.fxml";
+
     private String scenePath;
     private Object controller;
 
-    private ObservableList<Specialist> specialistObservableList = FXCollections.observableArrayList();
-    private ObservableList<Employer> employerObservableList = FXCollections.observableArrayList();
-    private ObservableList<Job> jobsObservableList = FXCollections.observableArrayList();
-    private ObservableList<HiredRecord> hiringRecordObservableList = FXCollections.observableArrayList();
+    private ObservableList<Specialist> specialistObservableList;
+    private ObservableList<Employer> employerObservableList;
+    private ObservableList<Job> jobsObservableList;
+    private ObservableList<HiredRecord> hiringRecordObservableList;
 
     public HomepageController(
             ObservableList<Specialist> specialistObservableList,
@@ -126,7 +127,14 @@ public class HomepageController {
     }
 
     public void employersScene(MouseEvent event) {
-
+        this.setScenePath(EMPLOYERS_SCENE);
+        this.setController(new EmployersController(
+                this.getSpecialistObservableList(),
+                this.getEmployerObservableList(),
+                this.getJobsObservableList(),
+                this.getHiringRecordObservableList()
+        ));
+        this.switchScene(event);
     }
 
     public void jobsScene(MouseEvent event) {

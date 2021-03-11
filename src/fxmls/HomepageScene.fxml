@@ -15,32 +15,32 @@
    <left>
       <VBox prefHeight="876.0" prefWidth="271.0" style="-fx-background-color: #1873d3;" BorderPane.alignment="CENTER">
          <children>
-            <Button onMouseClicked="#homepageScene" mnemonicParsing="false" prefHeight="75.0" prefWidth="280.0" style="-fx-background-color: #1873d3;" styleClass="side-bar-buttons" text="Home" textFill="WHITE">
+            <Button mnemonicParsing="false" onMouseClicked="#homepageScene" prefHeight="75.0" prefWidth="280.0" style="-fx-background-color: #1873d3;" styleClass="side-bar-buttons" text="Home" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button onMouseClicked="#specialistsScene" mnemonicParsing="false" prefHeight="75.0" prefWidth="280.0" style="-fx-background-color: #1873d3;" styleClass="side-bar-buttons" text="Specialists" textFill="WHITE">
+            <Button mnemonicParsing="false" onMouseClicked="#specialistsScene" prefHeight="75.0" prefWidth="280.0" style="-fx-background-color: #1873d3;" styleClass="side-bar-buttons" text="Specialists" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button onMouseClicked="#employersScene" mnemonicParsing="false" prefHeight="75.0" prefWidth="280.0" style="-fx-background-color: #1873d3;" styleClass="side-bar-buttons" text="Employers" textFill="WHITE">
+            <Button mnemonicParsing="false" onMouseClicked="#employersScene" prefHeight="75.0" prefWidth="280.0" style="-fx-background-color: #1873d3;" styleClass="side-bar-buttons" text="Employers" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button onMouseClicked="#jobsScene" mnemonicParsing="false" prefHeight="75.0" prefWidth="280.0" style="-fx-background-color: #1873d3;" styleClass="side-bar-buttons" text="Jobs" textFill="WHITE">
+            <Button mnemonicParsing="false" onMouseClicked="#jobsScene" prefHeight="75.0" prefWidth="280.0" style="-fx-background-color: #1873d3;" styleClass="side-bar-buttons" text="Jobs" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button onMouseClicked="#jobsScene" mnemonicParsing="false" prefHeight="75.0" prefWidth="280.0" style="-fx-background-color: #1873d3;" styleClass="side-bar-buttons" text="Sign job" textFill="WHITE">
+            <Button mnemonicParsing="false" onMouseClicked="#jobsScene" prefHeight="75.0" prefWidth="280.0" style="-fx-background-color: #1873d3;" styleClass="side-bar-buttons" text="Hired records" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button onMouseClicked="#endProgram" id="quit" mnemonicParsing="false" prefHeight="75.0" prefWidth="280.0" style="-fx-background-color: #dc3545;" text="Quit" textFill="WHITE">
+            <Button id="quit" mnemonicParsing="false" onMouseClicked="#endProgram" prefHeight="75.0" prefWidth="280.0" style="-fx-background-color: #dc3545;" text="Quit" textFill="WHITE">
                <VBox.margin>
                   <Insets top="315.0" />
                </VBox.margin>
@@ -92,22 +92,22 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <Button onMouseClicked="#specialistsScene" styleClass="home-buttons" mnemonicParsing="false" prefHeight="412.0" prefWidth="570.0" style="-fx-background-color: #eeeeee;" text="Specialists">
+            <Button mnemonicParsing="false" onMouseClicked="#specialistsScene" prefHeight="412.0" prefWidth="570.0" style="-fx-background-color: #eeeeee;" styleClass="home-buttons" text="Specialists">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button onMouseClicked="#employersScene" styleClass="home-buttons" mnemonicParsing="false" prefHeight="412.0" prefWidth="570.0" style="-fx-background-color: #eeeeee;" text="Employers" GridPane.columnIndex="1">
+            <Button mnemonicParsing="false" onMouseClicked="#employersScene" prefHeight="412.0" prefWidth="570.0" style="-fx-background-color: #eeeeee;" styleClass="home-buttons" text="Employers" GridPane.columnIndex="1">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button onMouseClicked="#jobsScene" styleClass="home-buttons" mnemonicParsing="false" prefHeight="412.0" prefWidth="570.0" style="-fx-background-color: #eeeeee;" text="Jobs" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onMouseClicked="#jobsScene" prefHeight="412.0" prefWidth="570.0" style="-fx-background-color: #eeeeee;" styleClass="home-buttons" text="Jobs" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button onMouseClicked="#jobsScene" styleClass="home-buttons" mnemonicParsing="false" prefHeight="412.0" prefWidth="570.0" style="-fx-background-color: #eeeeee;" text="Sign job" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onMouseClicked="#jobsScene" prefHeight="412.0" prefWidth="570.0" style="-fx-background-color: #eeeeee;" styleClass="home-buttons" text="Sign job" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
