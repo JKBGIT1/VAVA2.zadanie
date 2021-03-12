@@ -8,7 +8,7 @@ public class Specialist {
     private int yearsExperience;
     private String type;
     private boolean hired;
-    private ObservableList<String> education;
+    private String education;
     private ObservableList<String> certificates;
 
     public Specialist(
@@ -16,7 +16,7 @@ public class Specialist {
             double dayPrice,
             int yearsExperience,
             String type,
-            ObservableList<String> education,
+            String education,
             ObservableList<String> certificates
     ) {
         this.name = name;
@@ -68,11 +68,11 @@ public class Specialist {
         this.hired = hired;
     }
 
-    public ObservableList<String> getEducation() {
+    public String getEducation() {
         return education;
     }
 
-    public void setEducation(ObservableList<String> education) {
+    public void setEducation(String education) {
         this.education = education;
     }
 

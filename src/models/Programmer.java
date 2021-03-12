@@ -10,7 +10,7 @@ public class Programmer extends Specialist {
             double dayPrice,
             int yearsExperience,
             String type,
-            ObservableList<String> education,
+            String education,
             ObservableList<String> certificates,
             String device
     ) {

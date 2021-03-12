@@ -17,9 +17,9 @@ import java.util.ResourceBundle;
 public class FinishAddSpecialistController extends AddSpecialistController implements Initializable {
 
     @FXML
-    private ListView<String> educationListView, certificatesListView;
+    private ListView<String> certificatesListView;
     @FXML
-    private TextField tfEducation, tfCertificate;
+    private TextField tfCertificate;
 
     public FinishAddSpecialistController(
             ObservableList<Specialist> specialistObservableList,
@@ -33,31 +33,7 @@ public class FinishAddSpecialistController extends AddSpecialistController imple
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        educationListView.setItems(this.getSpecialist().getEducation());
         certificatesListView.setItems(this.getSpecialist().getCertificates());
-    }
-
-    public void addEducation() {
-        if (tfEducation.getText().equals("")) { // Need to write some education before adding to listview
-            this.showErrorPopUp("Enter education", "Enter education in the text field under Education table.");
-        } else {
-            String enteredEducation = tfEducation.getText();
-
-            this.getSpecialist().getEducation().add(enteredEducation); // education will be automatically added to listView
-            tfEducation.setText("");
-        }
-    }
-
-    public void removeEducation() {
-        int selectedEducation = educationListView.getSelectionModel().getSelectedIndex();
-
-        if (selectedEducation == -1) { // No education is selected
-            this.showErrorPopUp("Select from Education table", "Select education, which you want to remove");
-        } else {
-            // deleting from ObservableList based on index
-            // education will be automatically removed from listview
-            this.getSpecialist().getEducation().remove(selectedEducation);
-        }
     }
 
     public void addCertificate() {

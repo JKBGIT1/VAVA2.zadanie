@@ -10,7 +10,7 @@ public class Administrator extends Programmer {
             double dayPrice,
             int yearsExperience,
             String type,
-            ObservableList<String> education,
+            String education,
             ObservableList<String> certificates,
             String device,
             String preferredPlatform
