@@ -7,7 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -30,6 +32,7 @@ public class HomepageController {
     public static final String ADD_SPECIALIST_SCENE = "/fxmls/AddSpecialistScene.fxml";
     public static final String FINISH_ADD_SPECIALIST_SCENE = "/fxmls/FinishAddSpecialistScene.fxml";
     public static final String ADD_EMPLOYER_SCENE = "/fxmls/AddEmployerScene.fxml";
+    public static final String HIRE_SPECIALISTS_SCENE = "/fxmls/HireSpecialistsScene.fxml";
 
     public static final String EMPLOYERS_SCENE = "/fxmls/EmployersScene.fxml";
 
@@ -226,6 +229,24 @@ public class HomepageController {
     /**
      * End of Converting methods
      */
+
+    /**
+     * Attributes on columns mapping
+     */
+
+    public void mapSpecialistAttributesToColumns(
+            TableColumn<Specialist, String> nameCol,
+            TableColumn<Specialist, String> typeCol,
+            TableColumn<Specialist, Double> priceCol,
+            TableColumn<Specialist, Integer> experienceCol,
+            TableColumn<Specialist, Boolean> freeCol
+    ) {
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("dayPrice"));
+        experienceCol.setCellValueFactory(new PropertyValueFactory<>("yearsExperience"));
+        freeCol.setCellValueFactory(new PropertyValueFactory<>("hired"));
+    }
 
     /**
      * Start of PopUps

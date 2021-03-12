@@ -39,11 +39,8 @@ public class SpecialistsController extends HomepageController implements Initial
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
-        priceCol.setCellValueFactory(new PropertyValueFactory<>("dayPrice"));
-        experienceCol.setCellValueFactory(new PropertyValueFactory<>("yearsExperience"));
-        freeCol.setCellValueFactory(new PropertyValueFactory<>("hired"));
+        // map Specialist's attributes to columns in tableView
+        this.mapSpecialistAttributesToColumns(nameCol, typeCol, priceCol, experienceCol, freeCol);
 
         specialistTableView.setItems(this.getSpecialistObservableList());
     }

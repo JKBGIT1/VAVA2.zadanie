@@ -52,4 +52,24 @@ public class EmployersController extends HomepageController implements Initializ
         ));
         this.switchScene(event);
     }
+
+    // Employer wants to hire specialists
+    public void hireSpecialistsScene(MouseEvent event) {
+        if (employersTableView.getSelectionModel().getSelectedItem() == null) {
+            this.showErrorPopUp("Select employer", "Select employer from table, who wants to hire specialists.");
+        } else {
+            Employer selectedEmployer = employersTableView.getSelectionModel().getSelectedItem();
+
+            this.setScenePath(HIRE_SPECIALISTS_SCENE);
+            this.setController(new HireSpecialistsController(
+                    this.getSpecialistObservableList(),
+                    this.getEmployerObservableList(),
+                    this.getJobsObservableList(),
+                    this.getHiringRecordObservableList(),
+                    selectedEmployer
+            ));
+
+            this.switchScene(event);
+        }
+    }
 }
