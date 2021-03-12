@@ -6,6 +6,13 @@ public class Employer {
     private int employeesNumber;
     private String logo;
 
+    public Employer(String name, String businessArea, int employeesNumber, String logo) {
+        this.name = name;
+        this.businessArea = businessArea;
+        this.employeesNumber = employeesNumber;
+        this.logo = logo;
+    }
+
     public String getName() {
         return name;
     }

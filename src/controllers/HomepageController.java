@@ -29,6 +29,7 @@ public class HomepageController {
     public static final String SPECIALIST_SCENE = "/fxmls/SpecialistsScene.fxml";
     public static final String ADD_SPECIALIST_SCENE = "/fxmls/AddSpecialistScene.fxml";
     public static final String FINISH_ADD_SPECIALIST_SCENE = "/fxmls/FinishAddSpecialistScene.fxml";
+    public static final String ADD_EMPLOYER_SCENE = "/fxmls/AddEmployerScene.fxml";
 
     public static final String EMPLOYERS_SCENE = "/fxmls/EmployersScene.fxml";
 
@@ -51,6 +52,11 @@ public class HomepageController {
         this.jobsObservableList = jobsObservableList;
         this.hiringRecordObservableList = hiringRecordObservableList;
     }
+
+    /**
+     * Getters and setters
+     *
+     */
 
     public String getScenePath() {
         return scenePath;

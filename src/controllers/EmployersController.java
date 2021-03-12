@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import models.Employer;
 import models.HiredRecord;
 import models.Job;
@@ -17,7 +18,7 @@ import java.util.ResourceBundle;
 public class EmployersController extends HomepageController implements Initializable {
 
     @FXML
-    private TableView<Employer> employerTableView;
+    private TableView<Employer> employersTableView;
     @FXML
     private TableColumn<Employer, String> nameCol, businessAreaCol;
     @FXML
@@ -37,9 +38,18 @@ public class EmployersController extends HomepageController implements Initializ
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         businessAreaCol.setCellValueFactory(new PropertyValueFactory<>("businessArea"));
         employeesNumberCol.setCellValueFactory(new PropertyValueFactory<>("employeesNumber"));
+        // Fill tableView with Employers data.
+        employersTableView.setItems(this.getEmployerObservableList());
     }
 
-    public void addEmployerScene() {
-
+    public void addEmployerScene(MouseEvent event) {
+        this.setScenePath(ADD_EMPLOYER_SCENE);
+        this.setController(new AddEmployerController(
+                this.getSpecialistObservableList(),
+                this.getEmployerObservableList(),
+                this.getJobsObservableList(),
+                this.getHiringRecordObservableList()
+        ));
+        this.switchScene(event);
     }
 }
