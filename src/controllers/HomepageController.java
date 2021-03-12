@@ -33,6 +33,7 @@ public class HomepageController {
     public static final String FINISH_ADD_SPECIALIST_SCENE = "/fxmls/FinishAddSpecialistScene.fxml";
     public static final String ADD_EMPLOYER_SCENE = "/fxmls/AddEmployerScene.fxml";
     public static final String HIRE_SPECIALISTS_SCENE = "/fxmls/HireSpecialistsScene.fxml";
+    public static final String HIRED_RECORDS_SCENE = "/fxmls/HiredRecordsScene.fxml";
 
     public static final String EMPLOYERS_SCENE = "/fxmls/EmployersScene.fxml";
 
@@ -148,6 +149,17 @@ public class HomepageController {
 
     public void jobsScene(MouseEvent event) {
 
+    }
+
+    public void hiredRecordsScene(MouseEvent event) {
+        this.setScenePath(HIRED_RECORDS_SCENE);
+        this.setController(new HiredRecordsController(
+                this.getSpecialistObservableList(),
+                this.getEmployerObservableList(),
+                this.getJobsObservableList(),
+                this.getHiringRecordObservableList()
+        ));
+        this.switchScene(event);
     }
 
     public void endProgram(MouseEvent event) {

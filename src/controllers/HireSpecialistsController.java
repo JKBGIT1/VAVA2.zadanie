@@ -111,7 +111,7 @@ public class HireSpecialistsController extends HomepageController implements Ini
     }
 
     public void finishHiring(MouseEvent event) {
-        // need to finish hiring record.
+        // add new record about hiring to ObservableList with all HiredRecords
         this.getHiringRecordObservableList().add(new HiredRecord(
                 this.getSelectedEmployer(),
                 this.getHiredSpecialistsList()

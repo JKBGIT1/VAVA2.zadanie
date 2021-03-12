@@ -93,11 +93,11 @@
                 <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
             </BorderPane.margin>
             <children>
-                <TableView fx:id="employersTableView" prefHeight="200.0" prefWidth="200.0">
+                <TableView fx:id="hiredRecordsTableView" prefHeight="200.0" prefWidth="200.0">
                     <columns>
-                        <TableColumn fx:id="nameCol" prefWidth="400.0" text="Name" />
-                        <TableColumn fx:id="businessAreaCol" prefWidth="400.0" text="Business Area" />
-                        <TableColumn fx:id="employeesNumberCol" prefWidth="200.0" text="Number of employees" />
+                        <TableColumn fx:id="companyNameCol" prefWidth="324.0" text="Company Name" />
+                        <TableColumn fx:id="businessAreaCol" prefWidth="380.0" text="Business area" />
+                        <TableColumn fx:id="hiredEmployeesNumberCol" prefWidth="296.0" text="Number of hired employees" />
                         <TableColumn minWidth="0.0" prefWidth="0.0" text="Price/day" />
                     </columns>
                 </TableView>
@@ -124,24 +124,11 @@
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1">
                             <children>
-                                <Button maxWidth="200.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #1873d3;" text="Detail" textFill="WHITE">
+                                <Button maxWidth="200.0" mnemonicParsing="false" onMouseClicked="#detailHiredRecordScene" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #1873d3;" text="Detail" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>
                                 </Button>
-                                <Button maxWidth="200.0" mnemonicParsing="false" onMouseClicked="#hireSpecialistsScene" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #28a745;" text="Hire specialists" textFill="WHITE">
-                                    <font>
-                                        <Font name="System Bold" size="20.0" />
-                                    </font>
-                                    <HBox.margin>
-                                        <Insets />
-                                    </HBox.margin>
-                                </Button>
-                        <Button maxWidth="200.0" mnemonicParsing="false" onMouseClicked="#addEmployerScene" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #28a745;" text="Add employer" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Button>
                             </children>
                         </HBox>
                     </children>
