@@ -31,14 +31,6 @@ public class HiredRecord {
      * Those getters are for tableView in HiredRecordsScene
      */
 
-    public String getCompanyName() {
-        return this.employer.getName();
-    }
-
-    public String getBusinessArea() {
-        return this.employer.getBusinessArea();
-    }
-
     public int getHiredEmployeesNumber() {
         return this.hiredSpecialists.size();
     }

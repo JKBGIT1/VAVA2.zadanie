@@ -1,11 +1,12 @@
 package controllers;
 
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import models.Employer;
 import models.HiredRecord;
@@ -35,10 +36,15 @@ public class HiredRecordsController extends HomepageController implements Initia
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO need to make better mapping for businessArea companyName and hiredEmployeesNumber
-        companyNameCol.setCellValueFactory(new PropertyValueFactory<>("companyName"));
-        companyNameCol.setCellValueFactory(new PropertyValueFactory<>("businessArea"));
-        companyNameCol.setCellValueFactory(new PropertyValueFactory<>("hiredEmployeesNumber"));
+        // map table columns on methods from HiredRecord, to get their values
+        // inspiration https://stackoverflow.com/questions/14413040/converting-integer-to-observablevalueinteger-in-javafx
+        // inspiration https://stackoverflow.com/questions/25204068/how-do-i-point-a-propertyvaluefactory-to-a-value-of-a-map
+        companyNameCol.setCellValueFactory(
+                data -> new ReadOnlyStringWrapper(data.getValue().getEmployer().getName()));
+        businessAreaCol.setCellValueFactory(
+                data -> new ReadOnlyStringWrapper(data.getValue().getEmployer().getBusinessArea()));
+        hiredEmployeesNumberCol.setCellValueFactory(
+                data -> new SimpleIntegerProperty(data.getValue().getHiredEmployeesNumber()).asObject());
 
         hiredRecordsTableView.setItems(this.getHiringRecordObservableList());
     }
