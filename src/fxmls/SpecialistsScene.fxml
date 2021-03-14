@@ -100,7 +100,7 @@
                   <TableColumn fx:id="priceCol" prefWidth="200.0" text="Price/day" />
                   <TableColumn fx:id="experienceCol" minWidth="0.0" prefWidth="200.0" text="Experience/year" />
                   <TableColumn minWidth="0.0" prefWidth="0.0" text="Price/day" />
-                  <TableColumn fx:id="freeCol" minWidth="0.0" prefWidth="200.0" text="Free" />
+                  <TableColumn fx:id="hiredCol" minWidth="0.0" prefWidth="200.0" text="Hired" />
               </columns>
             </TableView>
             <GridPane GridPane.rowIndex="1">

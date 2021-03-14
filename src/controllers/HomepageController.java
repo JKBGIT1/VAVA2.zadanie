@@ -34,6 +34,7 @@ public class HomepageController {
     public static final String ADD_EMPLOYER_SCENE = "/fxmls/AddEmployerScene.fxml";
     public static final String HIRE_SPECIALISTS_SCENE = "/fxmls/HireSpecialistsScene.fxml";
     public static final String HIRED_RECORDS_SCENE = "/fxmls/HiredRecordsScene.fxml";
+    public static final String DETAIL_HIRED_RECORD_SCENE = "/fxmls/DetailHiredRecordScene.fxml";
 
     public static final String EMPLOYERS_SCENE = "/fxmls/EmployersScene.fxml";
 
@@ -251,13 +252,13 @@ public class HomepageController {
             TableColumn<Specialist, String> typeCol,
             TableColumn<Specialist, Double> priceCol,
             TableColumn<Specialist, Integer> experienceCol,
-            TableColumn<Specialist, Boolean> freeCol
+            TableColumn<Specialist, Boolean> hiredCol
     ) {
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("dayPrice"));
         experienceCol.setCellValueFactory(new PropertyValueFactory<>("yearsExperience"));
-        freeCol.setCellValueFactory(new PropertyValueFactory<>("hired"));
+        hiredCol.setCellValueFactory(new PropertyValueFactory<>("hired"));
     }
 
     /**

@@ -50,6 +50,24 @@ public class HiredRecordsController extends HomepageController implements Initia
     }
 
     public void detailHiredRecordScene(MouseEvent event) {
+        if (hiredRecordsTableView.getSelectionModel().getSelectedItem() == null) {
+            this.showErrorPopUp(
+                    "Select Hired record",
+                    "Select hired record, which you want to display in detail."
+            );
+        } else {
+            HiredRecord hiredRecord = hiredRecordsTableView.getSelectionModel().getSelectedItem();
 
+            this.setScenePath(DETAIL_HIRED_RECORD_SCENE);
+            this.setController(new DetailHiredRecordController(
+                    this.getSpecialistObservableList(),
+                    this.getEmployerObservableList(),
+                    this.getJobsObservableList(),
+                    this.getHiringRecordObservableList(),
+                    hiredRecord
+            ));
+
+            this.switchScene(event);
+        }
     }
 }

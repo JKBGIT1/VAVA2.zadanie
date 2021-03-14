@@ -26,7 +26,7 @@ public class HireSpecialistsController extends HomepageController implements Ini
     @FXML
     private TableColumn<Specialist, Integer> allExperienceCol, hiredExperienceCol;
     @FXML
-    private TableColumn<Specialist, Boolean> allFreeCol, hiredFreeCol;
+    private TableColumn<Specialist, Boolean> allHiredCol, hiredHiredCol;
 
     private Employer selectedEmployer;
     private ObservableList<Specialist> hiredSpecialistsList;
@@ -62,8 +62,8 @@ public class HireSpecialistsController extends HomepageController implements Ini
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // map Specialist's attributes to columns in tableView
-        this.mapSpecialistAttributesToColumns(allNameCol, allTypeCol, allPriceCol, allExperienceCol, allFreeCol);
-        this.mapSpecialistAttributesToColumns(hiredNameCol, hiredTypeCol, hiredPriceCol, hiredExperienceCol, hiredFreeCol);
+        this.mapSpecialistAttributesToColumns(allNameCol, allTypeCol, allPriceCol, allExperienceCol, allHiredCol);
+        this.mapSpecialistAttributesToColumns(hiredNameCol, hiredTypeCol, hiredPriceCol, hiredExperienceCol, hiredHiredCol);
 
         allSpecialistsTableView.setItems(this.getSpecialistObservableList());
         hiredSpecialistsTableView.setItems(this.getHiredSpecialistsList());

@@ -26,7 +26,7 @@ public class SpecialistsController extends HomepageController implements Initial
     @FXML
     private TableColumn<Specialist, Integer> experienceCol;
     @FXML
-    private TableColumn<Specialist, Boolean> freeCol;
+    private TableColumn<Specialist, Boolean> hiredCol;
 
     public SpecialistsController(
             ObservableList<Specialist> specialistObservableList,
@@ -40,7 +40,7 @@ public class SpecialistsController extends HomepageController implements Initial
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // map Specialist's attributes to columns in tableView
-        this.mapSpecialistAttributesToColumns(nameCol, typeCol, priceCol, experienceCol, freeCol);
+        this.mapSpecialistAttributesToColumns(nameCol, typeCol, priceCol, experienceCol, hiredCol);
 
         specialistTableView.setItems(this.getSpecialistObservableList());
     }

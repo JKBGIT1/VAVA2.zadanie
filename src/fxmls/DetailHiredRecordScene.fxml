@@ -86,26 +86,25 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="220.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="220.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="550.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <BorderPane.margin>
                 <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
             </BorderPane.margin>
             <children>
-                <GridPane GridPane.rowIndex="2">
+                <GridPane GridPane.rowIndex="1">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="133.0" prefWidth="317.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="133.0" prefWidth="509.0">
                             <children>
-                                <Button maxWidth="200.0" mnemonicParsing="false" onMouseClicked="#employersScene" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #dc3545;" text="Back" textFill="WHITE">
+                                <Button maxWidth="200.0" mnemonicParsing="false" onMouseClicked="#hiredRecordsScene" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #dc3545;" text="Back" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>
@@ -113,21 +112,11 @@
                                         <Insets right="20.0" />
                                     </HBox.margin>
                                 </Button>
-                        <Button maxWidth="200.0" mnemonicParsing="false" onMouseClicked="#dismissSpecialist" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #dc3545;" text="Dismiss specialist" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Button>
                             </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1">
                             <children>
-                                <Button maxWidth="200.0" mnemonicParsing="false" onMouseClicked="#hireSpecialist" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #1873d3;" text="Hire specialist" textFill="WHITE">
-                                    <font>
-                                        <Font name="System Bold" size="20.0" />
-                                    </font>
-                                </Button>
-                                <Button maxWidth="200.0" mnemonicParsing="false" onMouseClicked="#finishHiring" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #28a745;" text="Finish hiring" textFill="WHITE">
+                                <Button maxWidth="200.0" mnemonicParsing="false" onMouseClicked="#dismissSpecialist" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #dc3545;" text="Dismiss specialist" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>
@@ -139,47 +128,74 @@
                         </HBox>
                     </children>
                 </GridPane>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <Label text="These specialists will be hired:">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Label>
-                      <TableView fx:id="hiredSpecialistsTableView" prefHeight="299.0" prefWidth="1001.0">
-                          <columns>
-                              <TableColumn fx:id="hiredNameCol" prefWidth="200.0" text="Name" />
-                              <TableColumn fx:id="hiredTypeCol" prefWidth="200.0" text="Type" />
-                              <TableColumn fx:id="hiredPriceCol" prefWidth="200.0" text="Price/day" />
-                              <TableColumn fx:id="hiredExperienceCol" minWidth="0.0" prefWidth="200.0" text="Experience/year" />
-                              <TableColumn minWidth="0.0" prefWidth="0.0" text="Price/day" />
-                              <TableColumn fx:id="hiredHiredCol" minWidth="0.0" prefWidth="200.0" text="Hired" />
-                          </columns>
-                      </TableView>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                     <children>
+                        <Label text="Hired specialists: ">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                            <TableView fx:id="specialistTableView" prefHeight="376.0" prefWidth="1001.0">
+                                <columns>
+                                    <TableColumn fx:id="nameCol" prefWidth="200.0" text="Name" />
+                                    <TableColumn fx:id="typeCol" prefWidth="200.0" text="Type" />
+                                    <TableColumn fx:id="priceCol" prefWidth="200.0" text="Price/day" />
+                                    <TableColumn fx:id="experienceCol" minWidth="0.0" prefWidth="200.0" text="Experience/year" />
+                                    <TableColumn minWidth="0.0" prefWidth="0.0" text="Price/day" />
+                                    <TableColumn fx:id="hiredCol" minWidth="0.0" prefWidth="200.0" text="Hired" />
+                                </columns>
+                            </TableView>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <HBox prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Company name: ">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="companyNameLabel">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Business area: ">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="businessAreaLabel">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font></Label>
+                           </children>
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
-               <GridPane.margin>
-                  <Insets top="5.0" />
-               </GridPane.margin>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label text="All specialists:">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Label>
-                  <TableView fx:id="allSpecialistsTableView" prefHeight="307.0" prefWidth="1001.0">
-                     <columns>
-                        <TableColumn fx:id="allNameCol" prefWidth="200.0" text="Name" />
-                        <TableColumn fx:id="allTypeCol" prefWidth="200.0" text="Type" />
-                        <TableColumn fx:id="allPriceCol" prefWidth="200.0" text="Price/day" />
-                        <TableColumn fx:id="allExperienceCol" minWidth="0.0" prefWidth="200.0" text="Experience/year" />
-                        <TableColumn minWidth="0.0" prefWidth="0.0" text="Price/day" />
-                        <TableColumn fx:id="allHiredCol" minWidth="0.0" prefWidth="200.0" text="Hired" />
-                     </columns>
-                  </TableView>
-               </children>
-            </VBox>
+            </GridPane>
             </children>
         </GridPane>
     </center>
