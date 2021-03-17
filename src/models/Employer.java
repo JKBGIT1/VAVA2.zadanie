@@ -1,12 +1,14 @@
 package models;
 
+import javafx.scene.image.Image;
+
 public class Employer {
     private String name;
     private String businessArea;
     private int employeesNumber;
-    private String logo;
+    private Image logo;
 
-    public Employer(String name, String businessArea, int employeesNumber, String logo) {
+    public Employer(String name, String businessArea, int employeesNumber, Image logo) {
         this.name = name;
         this.businessArea = businessArea;
         this.employeesNumber = employeesNumber;
@@ -37,11 +39,11 @@ public class Employer {
         this.employeesNumber = employeesNumber;
     }
 
-    public String getLogo() {
+    public Image getLogo() {
         return logo;
     }
 
-    public void setLogo(String logo) {
+    public void setLogo(Image logo) {
         this.logo = logo;
     }
 }
