@@ -136,7 +136,7 @@ public class AddSpecialistController extends HomepageController implements Initi
                 this.switchScene(event);
             } catch (Exception e) {
                 this.showErrorPopUp("Error", "All text fields have to be filled and check entered types.");
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         }
     }

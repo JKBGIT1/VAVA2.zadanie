@@ -54,6 +54,7 @@ public class AddEmployerController extends HomepageController {
 
             // Show new dialog and store selected image into File object
             File file = fileChooser.showOpenDialog(null);
+            // Make Image as big as ImageView
             this.uploadedImage = new Image(
                     file.toURI().toString(),
                     logoImageView.getFitWidth(),
@@ -61,7 +62,6 @@ public class AddEmployerController extends HomepageController {
                     false,
                     false
             );
-            // Make Image as big as ImageView
             logoImageView.setImage(uploadedImage);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -79,8 +79,8 @@ public class AddEmployerController extends HomepageController {
 
             this.employersScene(event);
         } catch (Exception e) {
-            this.showErrorPopUp("Input error", "Number of employees has to be not decimal number.");
-            e.printStackTrace();
+            this.showErrorPopUp("Input error", "Number of employees has to be whole number.");
+            System.out.println(e.getMessage());
         }
     }
 }

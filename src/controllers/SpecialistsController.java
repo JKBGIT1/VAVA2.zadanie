@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import models.Employer;
 import models.HiredRecord;
@@ -57,11 +56,24 @@ public class SpecialistsController extends HomepageController implements Initial
         this.switchScene(event);
     }
 
-    public void detailSpecialistScene() {
+    public void detailSpecialistScene(MouseEvent event) {
+        if (specialistTableView.getSelectionModel().getSelectedItem() == null) {
+            this.showErrorPopUp(
+                    "Select specialist",
+                    "You need to select specialist, which you want to see in detail"
+            );
+        } else {
+            Specialist specialist = specialistTableView.getSelectionModel().getSelectedItem();
 
-    }
-
-    public void hireSpecialistScene() {
-
+            this.setScenePath(DETAIL_SPECIALIST_SCENE);
+            this.setController(new DetailSpecialistController(
+                    this.getSpecialistObservableList(),
+                    this.getEmployerObservableList(),
+                    this.getJobsObservableList(),
+                    this.getHiringRecordObservableList(),
+                    specialist
+            ));
+            this.switchScene(event);
+        }
     }
 }
