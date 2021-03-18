@@ -72,15 +72,23 @@ public class EmployersController extends HomepageController implements Initializ
         employersTableView.setItems(this.getEmployerObservableList());
     }
 
-    public void addEmployerScene(MouseEvent event) {
-        this.setScenePath(ADD_EMPLOYER_SCENE);
-        this.setController(new AddEmployerController(
-                this.getSpecialistObservableList(),
-                this.getEmployerObservableList(),
-                this.getJobsObservableList(),
-                this.getHiringRecordObservableList()
-        ));
-        this.switchScene(event);
+    public void createJobScene(MouseEvent event) {
+        if (employersTableView.getSelectionModel().getSelectedItem() == null) {
+            this.showErrorPopUp("Select employer", "You need to select employer, who will create a job");
+        } else {
+            Employer selectedEmployer = employersTableView.getSelectionModel().getSelectedItem();
+
+            this.setScenePath(CREATE_JOB_SCENE);
+            this.setController(new CreateJobController(
+                    this.getSpecialistObservableList(),
+                    this.getEmployerObservableList(),
+                    this.getJobsObservableList(),
+                    this.getHiringRecordObservableList(),
+                    selectedEmployer
+            ));
+
+            this.switchScene(event);
+        }
     }
 
     // Employer wants to hire specialists
@@ -101,5 +109,16 @@ public class EmployersController extends HomepageController implements Initializ
 
             this.switchScene(event);
         }
+    }
+
+    public void addEmployerScene(MouseEvent event) {
+        this.setScenePath(ADD_EMPLOYER_SCENE);
+        this.setController(new AddEmployerController(
+                this.getSpecialistObservableList(),
+                this.getEmployerObservableList(),
+                this.getJobsObservableList(),
+                this.getHiringRecordObservableList()
+        ));
+        this.switchScene(event);
     }
 }
