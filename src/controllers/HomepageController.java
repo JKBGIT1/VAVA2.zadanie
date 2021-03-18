@@ -24,6 +24,7 @@ import java.util.Optional;
 
 public class HomepageController {
 
+    // paths to all used scenes as constants
     public static final String HOMEPAGE_SCENE = "/fxmls/HomepageScene.fxml";
     public static final String SPECIALIST_SCENE = "/fxmls/SpecialistsScene.fxml";
     public static final String ADD_SPECIALIST_SCENE = "/fxmls/AddSpecialistScene.fxml";
@@ -38,9 +39,12 @@ public class HomepageController {
     public static final String JOBS_SCENE = "/fxmls/JobsScene.fxml";
     public static final String DETAIL_JOB_SCENE = "/fxmls/DetailJobScene.fxml";
 
+    // those attributes are set before scene switch
+    // values are set based on scene, which will be switched
     private String scenePath;
     private Object controller;
 
+    // in these collections I have stored data about specialists, employers, jobs and hired records
     private ObservableList<Specialist> specialistObservableList;
     private ObservableList<Employer> employerObservableList;
     private ObservableList<Job> jobsObservableList;
@@ -219,31 +223,8 @@ public class HomepageController {
     }
 
     // NOTE: This function needs to be used inside try and catch
-    public String convertDateToString(Date date) {
-        // Inspiration from https://www.javatpoint.com/java-date-to-string
-        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        return dateFormat.format(date);
-    }
-
-    // NOTE: This function needs to be used inside try and catch
     public String convertDoubleToString(double price) {
         return String.valueOf(price);
-    }
-
-    public Date convertStringToDate(String stringDate) {
-        try {
-            // Try to handle more types of date format
-            stringDate = stringDate.replaceAll("/", ".");
-            stringDate = stringDate.replaceAll("-", ".");
-            stringDate = stringDate.replaceAll(",", ".");
-
-            Date date = new SimpleDateFormat("dd.MM.yyyy").parse(stringDate); // Inspiration from https://www.javatpoint.com/java-string-to-date
-            return date;
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return null;
     }
 
     /**
