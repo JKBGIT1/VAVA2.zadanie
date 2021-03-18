@@ -161,12 +161,12 @@
                      <children>
                         <HBox prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Label text="Company name: ">
+                              <Label minHeight="30.0" minWidth="158.0" text="Company name: ">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="companyNameLabel">
+                              <Label fx:id="companyNameLabel" wrapText="true">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -178,12 +178,12 @@
                         </HBox>
                         <HBox prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Label text="Business area: ">
+                              <Label minHeight="30.0" minWidth="137.0" text="Business area: ">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="businessAreaLabel">
+                              <Label fx:id="businessAreaLabel" wrapText="true">
                                  <font>
                                     <Font size="20.0" />
                                  </font></Label>
