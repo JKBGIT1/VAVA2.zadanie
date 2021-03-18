@@ -36,6 +36,7 @@ public class HomepageController {
     public static final String EMPLOYERS_SCENE = "/fxmls/EmployersScene.fxml";
     public static final String CREATE_JOB_SCENE = "/fxmls/CreateJobScene.fxml";
     public static final String JOBS_SCENE = "/fxmls/JobsScene.fxml";
+    public static final String DETAIL_JOB_SCENE = "/fxmls/DetailJobScene.fxml";
 
     private String scenePath;
     private Object controller;

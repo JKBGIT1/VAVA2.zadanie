@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import models.Employer;
 import models.HiredRecord;
 import models.Job;
@@ -43,5 +44,27 @@ public class JobsController extends HomepageController implements Initializable 
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         jobsTableView.setItems(this.getJobsObservableList());
+    }
+
+    public void detailJobScene(MouseEvent event) {
+        if (jobsTableView.getSelectionModel().getSelectedItem() == null) {
+            this.showErrorPopUp(
+                    "Select job",
+                    "You need to select a job, which you want to display in detail"
+            );
+        } else {
+            Job selectedJob = jobsTableView.getSelectionModel().getSelectedItem();
+
+            this.setScenePath(DETAIL_JOB_SCENE);
+            this.setController(new DetailJobController(
+                    this.getSpecialistObservableList(),
+                    this.getEmployerObservableList(),
+                    this.getJobsObservableList(),
+                    this.getHiringRecordObservableList(),
+                    selectedJob
+            ));
+
+            this.switchScene(event);
+        }
     }
 }
