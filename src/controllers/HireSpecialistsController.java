@@ -69,6 +69,17 @@ public class HireSpecialistsController extends HomepageController implements Ini
         hiredSpecialistsTableView.setItems(this.getHiredSpecialistsList());
     }
 
+    public void backToEmployersScene(MouseEvent event) {
+        // free specialists, who were selected for hiring
+        for (Specialist specialist : this.getHiredSpecialistsList()) {
+            this.getSpecialistObservableList().remove(specialist);
+            specialist.setHired(false);
+            this.getSpecialistObservableList().add(specialist);
+        }
+
+        this.employersScene(event);
+    }
+
     public void dismissSpecialist() {
         if (hiredSpecialistsTableView.getSelectionModel().getSelectedItem() == null) {
             this.showErrorPopUp(
@@ -77,14 +88,12 @@ public class HireSpecialistsController extends HomepageController implements Ini
             );
         } else {
             Specialist selectedSpecialist = hiredSpecialistsTableView.getSelectionModel().getSelectedItem();
-            selectedSpecialist.setHired(false);
-            // Specialist will be automatically removed from tableView
-            // Remove and add the specialist from list, to make sure,
-            // that data in tableView with all specialists are updated.
-            this.getSpecialistObservableList().remove(selectedSpecialist);
-            this.getSpecialistObservableList().add(selectedSpecialist);
-
+            // remove selected specialist from hired list
             this.getHiredSpecialistsList().remove(selectedSpecialist);
+            // set hired to false and refresh both tableViews
+            selectedSpecialist.setHired(false);
+            hiredSpecialistsTableView.refresh();
+            allSpecialistsTableView.refresh();
         }
     }
 
@@ -100,22 +109,29 @@ public class HireSpecialistsController extends HomepageController implements Ini
             if (selectedSpecialist.isHired()) {
                 this.showErrorPopUp("Already hired", "You can hire only free specialists.");
             } else {
-                // Specialist might be finally hired
+                // set hired specialist to true
                 selectedSpecialist.setHired(true);
-                // Remove and add the specialist from list, to make sure, that data in tableView are updated.
-                this.getSpecialistObservableList().remove(selectedSpecialist);
-                this.getSpecialistObservableList().add(selectedSpecialist);
+                // add him to hired specialist list and refresh both tableViews
                 this.getHiredSpecialistsList().add(selectedSpecialist);
+                hiredSpecialistsTableView.refresh();
+                allSpecialistsTableView.refresh();
             }
         }
     }
 
     public void finishHiring(MouseEvent event) {
-        // add new record about hiring to ObservableList with all HiredRecords
-        this.getHiringRecordObservableList().add(new HiredRecord(
-                this.getSelectedEmployer(),
-                this.getHiredSpecialistsList()
-        ));
-        this.employersScene(event);
+        if (this.getHiredSpecialistsList().size() < 1) {
+            this.showErrorPopUp(
+                    "Not enough specialists",
+                    "You have to hire at least one specialist."
+            );
+        } else {
+            // add new record about hiring to ObservableList with all HiredRecords
+            this.getHiringRecordObservableList().add(new HiredRecord(
+                    this.getSelectedEmployer(),
+                    this.getHiredSpecialistsList()
+            ));
+            this.employersScene(event);
+        }
     }
 }

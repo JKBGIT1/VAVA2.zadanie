@@ -13,10 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import models.Employer;
-import models.HiredRecord;
-import models.Job;
-import models.Specialist;
+import models.*;
 
 import java.io.IOException;
 import java.text.DateFormat;
