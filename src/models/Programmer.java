@@ -3,7 +3,7 @@ package models;
 import javafx.collections.ObservableList;
 
 public class Programmer extends Specialist {
-    private String device;
+    private String position;
 
     public Programmer(
             String name,
@@ -12,18 +12,17 @@ public class Programmer extends Specialist {
             String type,
             String education,
             ObservableList<String> certificates,
-            String device
+            String position
     ) {
         super(name, dayPrice, yearsExperience, type, education, certificates);
-        this.device = device;
+        this.position = position;
     }
 
-
-    public String getDevice() {
-        return device;
+    public String getPosition() {
+        return position;
     }
 
-    public void setDevice(String device) {
-        this.device = device;
+    public void setPosition(String position) {
+        this.position = position;
     }
 }

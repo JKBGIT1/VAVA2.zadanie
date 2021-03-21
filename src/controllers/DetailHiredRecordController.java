@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.ImageView;
 import models.Employer;
 import models.HiredRecord;
 import models.Job;
@@ -30,6 +31,8 @@ public class DetailHiredRecordController extends HomepageController implements I
     private TableColumn<Specialist, Integer> experienceCol;
     @FXML
     private TableColumn<Specialist, Boolean> hiredCol;
+    @FXML
+    private ImageView logoImageView;
 
     public DetailHiredRecordController(
             ObservableList<Specialist> specialistObservableList,
@@ -59,6 +62,7 @@ public class DetailHiredRecordController extends HomepageController implements I
         // display information about employer
         companyNameLabel.setText(this.getHiredRecord().getEmployer().getName());
         businessAreaLabel.setText(this.getHiredRecord().getEmployer().getBusinessArea());
+        logoImageView.setImage(this.getHiredRecord().getEmployer().getLogo());
     }
 
     public void dismissSpecialist() {

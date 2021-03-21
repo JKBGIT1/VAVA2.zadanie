@@ -66,7 +66,8 @@ public class EmployersController extends HomepageController implements Initializ
             cell.setGraphic(imageview);
             return cell;
         });
-//        logoCol.setCellValueFactory(new PropertyValueFactory<Employer, Image>("logo"));
+        // set logo attribute as CellValueFactory
+        logoCol.setCellValueFactory(new PropertyValueFactory<Employer, Image>("logo"));
 
         // Fill tableView with Employers data.
         employersTableView.setItems(this.getEmployerObservableList());

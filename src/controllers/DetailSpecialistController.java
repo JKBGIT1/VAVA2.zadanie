@@ -13,8 +13,8 @@ import java.util.ResourceBundle;
 public class DetailSpecialistController extends HomepageController implements Initializable {
 
     @FXML
-    private Label tfName, tfPrice, tfExperience, tfType, tfHighestEducation,
-                        tfDevice, tfPreferredPlatform, tfCyberSecurity;
+    private Label labelName, labelPrice, labelExperience, labelType, labelHighestEducation,
+                        labelPosition, labelPreferredPlatform, labelCyberSecurity, labelHired;
     @FXML
     private ListView<String> certificatesListView;
 
@@ -34,14 +34,15 @@ public class DetailSpecialistController extends HomepageController implements In
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Firstly set generic information for each specialist
-        tfName.setText(this.selectedSpecialist.getName());
-        tfPrice.setText(String.valueOf(this.selectedSpecialist.getDayPrice()));
-        tfExperience.setText(String.valueOf(this.selectedSpecialist.getYearsExperience()));
-        tfType.setText(this.selectedSpecialist.getType());
-        tfHighestEducation.setText(this.selectedSpecialist.getEducation());
-        tfDevice.setText("None");
-        tfPreferredPlatform.setText("None");
-        tfCyberSecurity.setText("None");
+        labelName.setText(this.selectedSpecialist.getName());
+        labelPrice.setText(String.valueOf(this.selectedSpecialist.getDayPrice()));
+        labelExperience.setText(String.valueOf(this.selectedSpecialist.getYearsExperience()));
+        labelType.setText(this.selectedSpecialist.getType());
+        labelHighestEducation.setText(this.selectedSpecialist.getEducation());
+        labelHired.setText(this.selectedSpecialist.isHired() ? "Yes" : "No");
+        labelPosition.setText("None");
+        labelPreferredPlatform.setText("None");
+        labelCyberSecurity.setText("None");
 
         // Display specialists certificates in listView
         certificatesListView.setItems(this.selectedSpecialist.getCertificates());
@@ -50,15 +51,15 @@ public class DetailSpecialistController extends HomepageController implements In
         switch (this.selectedSpecialist.getType()) {
             case "Programmer":
                 // Firstly change specialist type to Programmer then set device
-                tfDevice.setText(((Programmer) this.selectedSpecialist).getDevice());
+                labelPosition.setText(((Programmer) this.selectedSpecialist).getPosition());
                 break;
             case "Administrator":
-                tfDevice.setText(((Administrator) this.selectedSpecialist).getDevice());
-                tfPreferredPlatform.setText(((Administrator) this.selectedSpecialist).getPreferredPlatform());
+                labelPosition.setText(((Administrator) this.selectedSpecialist).getPosition());
+                labelPreferredPlatform.setText(((Administrator) this.selectedSpecialist).getPreferredPlatform());
                 break;
             case "Security consultant":
                 String cyberSecurity = ((SecurityConsultant) this.selectedSpecialist).isCyberSecurity() ? "Yes" : "No";
-                tfCyberSecurity.setText(cyberSecurity);
+                labelCyberSecurity.setText(cyberSecurity);
                 break;
         }
     }

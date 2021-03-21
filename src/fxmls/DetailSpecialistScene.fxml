@@ -126,9 +126,10 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                  <VBox prefHeight="60.0" prefWidth="100.0" spacing="2.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.rowSpan="2">
+                  <VBox prefHeight="60.0" prefWidth="100.0" spacing="2.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.rowSpan="3">
                      <children>
                         <Label text="Certificates:">
                            <font>
@@ -148,7 +149,7 @@
                                         <Font name="System Bold" size="20.0" />
                                     </font>
                                 </Label>
-                        <Label fx:id="tfName" wrapText="true">
+                        <Label fx:id="labelName" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -165,41 +166,7 @@
                                         <Font name="System Bold" size="20.0" />
                                     </font>
                                 </Label>
-                        <Label fx:id="tfType" wrapText="true">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <GridPane.margin>
-                        <Insets bottom="20.0" left="75.0" right="75.0" top="20.0" />
-                     </GridPane.margin>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0" GridPane.columnIndex="1">
-                     <children>
-                                <Label minHeight="30.0" minWidth="103.0" text="Pride/day: ">
-                                    <font>
-                                        <Font name="System Bold" size="20.0" />
-                                    </font>
-                                </Label>
-                        <Label fx:id="tfPrice" wrapText="true">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <GridPane.margin>
-                        <Insets bottom="20.0" left="75.0" right="75.0" top="20.0" />
-                     </GridPane.margin>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <children>
-                                <Label minHeight="30.0" minWidth="74.0" text="Device: ">
-                                    <font>
-                                        <Font name="System Bold" size="20.0" />
-                                    </font>
-                                </Label>
-                        <Label fx:id="tfDevice" wrapText="true">
+                        <Label fx:id="labelType" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -211,29 +178,12 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0" GridPane.rowIndex="1">
                      <children>
-                                <Label minHeight="30.0" minWidth="163.0" text="Experience/year: ">
+                                <Label minHeight="30.0" minWidth="103.0" text="Pride/day: ">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>
                                 </Label>
-                        <Label fx:id="tfExperience" wrapText="true">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <GridPane.margin>
-                        <Insets bottom="20.0" left="75.0" right="75.0" top="20.0" />
-                     </GridPane.margin>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0" GridPane.rowIndex="2">
-                     <children>
-                                <Label minHeight="30.0" minWidth="183.0" text="Highest education: ">
-                                    <font>
-                                        <Font name="System Bold" size="20.0" />
-                                    </font>
-                                </Label>
-                        <Label fx:id="tfHighestEducation" wrapText="true">
+                        <Label fx:id="labelPrice" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -245,12 +195,46 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0" GridPane.rowIndex="3">
                      <children>
-                                <Label minHeight="30.0" minWidth="188.0" text="Preferred platform: ">
+                                <Label minHeight="30.0" minWidth="74.0" text="Position: ">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>
                                 </Label>
-                        <Label fx:id="tfPreferredPlatform" wrapText="true">
+                        <Label fx:id="labelPosition" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="75.0" right="75.0" top="20.0" />
+                     </GridPane.margin>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0" GridPane.rowIndex="2">
+                     <children>
+                                <Label minHeight="30.0" minWidth="163.0" text="Experience/year: ">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font>
+                                </Label>
+                        <Label fx:id="labelExperience" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="75.0" right="75.0" top="20.0" />
+                     </GridPane.margin>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                                <Label minHeight="30.0" minWidth="183.0" text="Highest education: ">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font>
+                                </Label>
+                        <Label fx:id="labelHighestEducation" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -262,12 +246,46 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0" GridPane.rowIndex="4">
                      <children>
+                                <Label minHeight="30.0" minWidth="188.0" text="Preferred platform: ">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font>
+                                </Label>
+                        <Label fx:id="labelPreferredPlatform" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="75.0" right="75.0" top="20.0" />
+                     </GridPane.margin>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0" GridPane.rowIndex="5">
+                     <children>
                                 <Label minHeight="30.0" minWidth="219.0" text="Cyber security auditor: ">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>
                                 </Label>
-                        <Label fx:id="tfCyberSecurity" wrapText="true">
+                        <Label fx:id="labelCyberSecurity" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="75.0" right="75.0" top="20.0" />
+                     </GridPane.margin>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0" GridPane.columnIndex="1">
+                     <children>
+                        <Label minHeight="30.0" minWidth="67.0" text="Hired: ">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelHired" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font>

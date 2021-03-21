@@ -69,11 +69,11 @@ public class AddSpecialistController extends HomepageController implements Initi
             // Need to fill information about specific specialist separately
             if (specialistType.equals(PROGRAMMER)) {
                 Programmer programmer = (Programmer) createdSpecialist;
-                deviceComboBox.getSelectionModel().select(programmer.getDevice());
+                deviceComboBox.getSelectionModel().select(programmer.getPosition());
 
             } else if (specialistType.equals(ADMINISTRATOR)) {
                 Administrator administrator = (Administrator) createdSpecialist;
-                deviceComboBox.getSelectionModel().select(administrator.getDevice());
+                deviceComboBox.getSelectionModel().select(administrator.getPosition());
                 tfPreferredPlatform.setText(administrator.getPreferredPlatform());
 
             } else if (specialistType.equals(SECURITY_CONSULTANT)) {
