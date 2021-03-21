@@ -66,13 +66,15 @@ public class EmployersController extends HomepageController implements Initializ
             cell.setGraphic(imageview);
             return cell;
         });
-        logoCol.setCellValueFactory(new PropertyValueFactory<Employer, Image>("logo"));
+//        logoCol.setCellValueFactory(new PropertyValueFactory<Employer, Image>("logo"));
 
         // Fill tableView with Employers data.
         employersTableView.setItems(this.getEmployerObservableList());
     }
 
+    // User wants to create a job with selected employer
     public void createJobScene(MouseEvent event) {
+        // User have to select employer, who will create the job otherwise it will popup an error
         if (employersTableView.getSelectionModel().getSelectedItem() == null) {
             this.showErrorPopUp("Select employer", "You need to select employer, who will create a job");
         } else {
@@ -93,6 +95,7 @@ public class EmployersController extends HomepageController implements Initializ
 
     // Employer wants to hire specialists
     public void hireSpecialistsScene(MouseEvent event) {
+        // User need to select an employer, who will hire specialists
         if (employersTableView.getSelectionModel().getSelectedItem() == null) {
             this.showErrorPopUp("Select employer", "Select employer from table, who wants to hire specialists.");
         } else {
@@ -111,6 +114,7 @@ public class EmployersController extends HomepageController implements Initializ
         }
     }
 
+    // switch to scene where user will be able to add new employer
     public void addEmployerScene(MouseEvent event) {
         this.setScenePath(ADD_EMPLOYER_SCENE);
         this.setController(new AddEmployerController(

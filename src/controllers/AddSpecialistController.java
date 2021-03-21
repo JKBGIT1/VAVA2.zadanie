@@ -18,15 +18,15 @@ public class AddSpecialistController extends HomepageController implements Initi
     public static final String SECURITY_CONSULTANT = "Security consultant";
 
     @FXML
-    ComboBox<String> specialistTypeComboBox = new ComboBox<String>();
+    private ComboBox<String> specialistTypeComboBox = new ComboBox<String>();
     @FXML
-    ComboBox<String> deviceComboBox = new ComboBox<String>();
+    private ComboBox<String> deviceComboBox = new ComboBox<String>();
     @FXML
-    ComboBox<String> highestEducationComboBox = new ComboBox<String>();
+    private ComboBox<String> highestEducationComboBox = new ComboBox<String>();
     @FXML
-    ComboBox<String> securityConsultantComboBox = new ComboBox<String>();
+    private ComboBox<String> securityConsultantComboBox = new ComboBox<String>();
     @FXML
-    TextField tfName, tfPrice, tfExperience, tfPreferredPlatform;
+    private TextField tfName, tfPrice, tfExperience, tfPreferredPlatform;
 
     private Specialist specialist;
 
@@ -51,6 +51,7 @@ public class AddSpecialistController extends HomepageController implements Initi
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // If user has created specialist it will fill his information into proper TextFields and ComboBoxes
         if (this.getSpecialist() != null) {
             String specialistType = this.getSpecialist().getType();
             Specialist createdSpecialist = this.getSpecialist();
@@ -108,23 +109,25 @@ public class AddSpecialistController extends HomepageController implements Initi
                 int specialistExperience = Integer.parseInt(tfExperience.getText());
                 ObservableList<String> certificatesList = FXCollections.observableArrayList();
 
+                // this will copy specialist's certificates, if he already has ones
                 if (this.getSpecialist() != null) {
                     certificatesList = this.getSpecialist().getCertificates();
                 }
 
+                // created specialist based on selected type
                 switch (selectedSpecialist) {
                     case PROGRAMMER:
                         setSpecialistAsProgrammer(specialistName, specialistPrice, specialistExperience, highestEducation, certificatesList);
                         break;
                     case ADMINISTRATOR:
                         setSpecialistAsAdministrator(specialistName, specialistPrice, specialistExperience, highestEducation, certificatesList);
-                        setAdministratorComboBoxes();
                         break;
                     case SECURITY_CONSULTANT:
                         setSpecialistAsConsultant(specialistName, specialistPrice, specialistExperience, highestEducation, certificatesList);
                         break;
                 }
 
+                // switch scene to last step of specialist creation
                 this.setScenePath(FINISH_ADD_SPECIALIST_SCENE);
                 this.setController(new FinishAddSpecialistController(
                         this.getSpecialistObservableList(),
@@ -141,34 +144,62 @@ public class AddSpecialistController extends HomepageController implements Initi
         }
     }
 
-    /**
+    /*
      * Creating specific type of specialist, when going to the next step of creation.
-     * @param name
-     * @param price
-     * @param experience
-     * @param education
-     * @param experienceList
      */
 
     private void setSpecialistAsProgrammer(String name, double price, int experience, String education, ObservableList<String> experienceList) {
         String selectedDevice = deviceComboBox.getSelectionModel().getSelectedItem();
-        this.setSpecialist(new Programmer(name, price, experience, PROGRAMMER, education, experienceList, selectedDevice));
+        this.setSpecialist(new Programmer(
+                name,
+                price,
+                experience,
+                PROGRAMMER,
+                education,
+                experienceList,
+                selectedDevice
+        ));
     }
 
     private void setSpecialistAsAdministrator(String name, double price, int experience, String education, ObservableList<String> experienceList) {
         String selectedDevice = deviceComboBox.getSelectionModel().getSelectedItem();
         String platform = tfPreferredPlatform.getText();
 
-        this.setSpecialist(new Administrator(name, price, experience, ADMINISTRATOR, education, experienceList, selectedDevice, platform));
+        this.setSpecialist(new Administrator(
+                name,
+                price,
+                experience,
+                ADMINISTRATOR,
+                education,
+                experienceList,
+                selectedDevice,
+                platform
+        ));
     }
 
     private void setSpecialistAsConsultant(String name, double price, int experience, String education, ObservableList<String> experienceList) {
         String selectedCyberSecurity = securityConsultantComboBox.getSelectionModel().getSelectedItem();
 
         if (selectedCyberSecurity != null && selectedCyberSecurity.equals("Yes")) {
-            this.setSpecialist(new SecurityConsultant(name, price, experience, SECURITY_CONSULTANT, education, experienceList, true));
+            this.setSpecialist(new SecurityConsultant(
+                    name,
+                    price,
+                    experience,
+                    SECURITY_CONSULTANT,
+                    education,
+                    experienceList,
+                    true
+            ));
         } else {
-            this.setSpecialist(new SecurityConsultant(name, price, experience, SECURITY_CONSULTANT, education, experienceList, false));
+            this.setSpecialist(new SecurityConsultant(
+                    name,
+                    price,
+                    experience,
+                    SECURITY_CONSULTANT,
+                    education,
+                    experienceList,
+                    false
+            ));
         }
     }
 
@@ -191,6 +222,10 @@ public class AddSpecialistController extends HomepageController implements Initi
                 break;
         }
     }
+
+    /*
+     * These methods will prepared the scene for proper specialist type
+     */
 
     private void setProgrammerComboBoxes() {
         tfPreferredPlatform.setText("");

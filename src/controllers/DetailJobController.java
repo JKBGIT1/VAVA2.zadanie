@@ -33,6 +33,7 @@ public class DetailJobController extends HomepageController implements Initializ
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // display selected job information in labels
         labelJobName.setText(this.selectedJob.getJobName());
         labelType.setText(this.selectedJob.getSpecialistType());
         labelPrice.setText(String.valueOf(this.selectedJob.getPrice()));

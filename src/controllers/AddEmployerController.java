@@ -35,6 +35,7 @@ public class AddEmployerController extends HomepageController {
         this.uploadedImage = null;
     }
 
+    // This will remove uploaded from ImageView and uploadedImage attribute
     public void removeImage() {
         logoImageView.setImage(null);
         this.uploadedImage = null;
@@ -42,19 +43,20 @@ public class AddEmployerController extends HomepageController {
 
     public void uploadImage(MouseEvent event) {
         try {
-            // Inspiration for FileChooser from https://stackoverflow.com/questions/60184035/java-fx-image-upload-from-file
+            // inspiration for FileChooser from https://stackoverflow.com/questions/60184035/java-fx-image-upload-from-file
             FileChooser fileChooser = new FileChooser();
 
-            // Create extensions for FileChooser
+            // create extensions for FileChooser
+            // user will be able to choose only these types of files from filesystem
             FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG", "*.JPG");
             FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG", "*.PNG");
             FileChooser.ExtensionFilter extFilterjpg = new FileChooser.ExtensionFilter("jpg", "*.jpg");
             FileChooser.ExtensionFilter extFilterpng = new FileChooser.ExtensionFilter("png", "*.png");
             fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG, extFilterjpg, extFilterpng);
 
-            // Show new dialog and store selected image into File object
+            // show new dialog and store selected image into File object
             File file = fileChooser.showOpenDialog(null);
-            // Make Image as big as ImageView
+            // make Image as big as ImageView
             this.uploadedImage = new Image(
                     file.toURI().toString(),
                     logoImageView.getFitWidth(),
@@ -79,7 +81,7 @@ public class AddEmployerController extends HomepageController {
 
             this.employersScene(event);
         } catch (Exception e) {
-            this.showErrorPopUp("Input error", "Number of employees has to be whole number.");
+            this.showErrorPopUp("Input error", "Number of employees must be an integer.");
             System.out.println(e.getMessage());
         }
     }

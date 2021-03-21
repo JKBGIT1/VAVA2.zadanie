@@ -42,6 +42,14 @@ public class DetailHiredRecordController extends HomepageController implements I
         this.hiredRecord = hiredRecord;
     }
 
+    public HiredRecord getHiredRecord() {
+        return hiredRecord;
+    }
+
+    public void setHiredRecord(HiredRecord hiredRecord) {
+        this.hiredRecord = hiredRecord;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // map Specialist's attributes to columns in tableView
@@ -53,19 +61,13 @@ public class DetailHiredRecordController extends HomepageController implements I
         businessAreaLabel.setText(this.getHiredRecord().getEmployer().getBusinessArea());
     }
 
-    public HiredRecord getHiredRecord() {
-        return hiredRecord;
-    }
-
-    public void setHiredRecord(HiredRecord hiredRecord) {
-        this.hiredRecord = hiredRecord;
-    }
-
     public void dismissSpecialist() {
+        // If user didn't select specialist which he/she wants to dismiss, then error will popup.
         if (specialistTableView.getSelectionModel().getSelectedItem() == null) {
             this.showErrorPopUp(
                     "Select specialist",
-                    "You need to select specialist, which you want to dismiss.");
+                    "You need to select specialist, which you want to dismiss."
+            );
         } else {
             Specialist selectedSpecialist = specialistTableView.getSelectionModel().getSelectedItem();
 

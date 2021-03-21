@@ -42,10 +42,11 @@ public class CreateJobController extends HomepageController implements Initializ
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // set items for specialist type to ComboBox
         specialistTypeComboBox.setItems(FXCollections.observableArrayList(
                 "Programmer", "Administrator", "Security consultant"
         ));
-
+        // set items for specialist highest education to ComboBox
         highestEducationComboBox.setItems(FXCollections.observableArrayList(
                 "Grade school", "High school", "University"
         ));
@@ -53,6 +54,7 @@ public class CreateJobController extends HomepageController implements Initializ
 
     public void createJob(MouseEvent event) {
         try {
+            // get job's information from TextFields and ComboBoxes
             String jobName = tfName.getText();
             double price = Double.parseDouble(tfPrice.getText());
             int experience = Integer.parseInt(tfExperience.getText());
@@ -60,6 +62,7 @@ public class CreateJobController extends HomepageController implements Initializ
             String highestEducation = highestEducationComboBox.getSelectionModel().getSelectedItem();
             String specialistType = specialistTypeComboBox.getSelectionModel().getSelectedItem();
 
+            // add newly created job to list with all jobs
             this.getJobsObservableList().add(new Job(
                     this.selectedEmployer.getName(),
                     jobName,
@@ -70,6 +73,7 @@ public class CreateJobController extends HomepageController implements Initializ
                     jobDescription
             ));
 
+            // go back to employers scene
             this.employersScene(event);
         } catch (Exception e) {
             this.showErrorPopUp("Wrong input", "Price and experience has to be number.");
