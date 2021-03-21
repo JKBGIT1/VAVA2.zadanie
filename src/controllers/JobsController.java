@@ -37,6 +37,7 @@ public class JobsController extends HomepageController implements Initializable 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // map columns to attributes in Job class
         jobNameCol.setCellValueFactory(new PropertyValueFactory<>("jobName"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("specialistType"));
         highestEducationCol.setCellValueFactory(new PropertyValueFactory<>("highestEducation"));

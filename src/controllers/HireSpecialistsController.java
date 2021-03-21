@@ -61,10 +61,12 @@ public class HireSpecialistsController extends HomepageController implements Ini
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // map Specialist's attributes to columns in tableView
+        // map Specialist's attributes to columns in allSpecialistsTableView
         this.mapSpecialistAttributesToColumns(allNameCol, allTypeCol, allPriceCol, allExperienceCol, allHiredCol);
+        // map Specialist's attributes to columns in hiredSpecialistsTableView
         this.mapSpecialistAttributesToColumns(hiredNameCol, hiredTypeCol, hiredPriceCol, hiredExperienceCol, hiredHiredCol);
 
+        // display all specialists and hired specialists
         allSpecialistsTableView.setItems(this.getSpecialistObservableList());
         hiredSpecialistsTableView.setItems(this.getHiredSpecialistsList());
     }

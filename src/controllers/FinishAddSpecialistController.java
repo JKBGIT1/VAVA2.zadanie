@@ -37,20 +37,20 @@ public class FinishAddSpecialistController extends AddSpecialistController imple
     }
 
     public void addCertificate() {
-        if (tfCertificate.getText().equals("")) { // Need to write some education before adding to listview
+        if (tfCertificate.getText().equals("")) { // Need to write some certificate before adding to listview
             this.showErrorPopUp("Enter certificate", "Enter certificate in the text field under Certificates table.");
         } else {
-            String enteredCertificate = tfCertificate.getText();
+            String enteredCertificate = tfCertificate.getText(); // get name of the certificate
 
             this.getSpecialist().getCertificates().add(enteredCertificate); // certificate will be automatically added to listView
-            tfCertificate.setText("");
+            tfCertificate.setText(""); // empty TextField for certificate
         }
     }
 
     public void removeCertificate() {
         int selectedCertificate = certificatesListView.getSelectionModel().getSelectedIndex();
 
-        if (selectedCertificate == -1) { // No education is selected
+        if (selectedCertificate == -1) { // No certificate is selected
             this.showErrorPopUp("Select from Certificates table", "Select certificate, which you want to remove");
         } else {
             // deleting from ObservableList based on index
@@ -60,11 +60,12 @@ public class FinishAddSpecialistController extends AddSpecialistController imple
     }
 
     public void createSpecialist(MouseEvent event) {
-        // add created specialist to ObservableList of Specialist before switching scene
+        // add created specialist to ObservableList of all Specialist before switching scene
         this.getSpecialistObservableList().add(this.getSpecialist());
         this.specialistsScene(event);
     }
 
+    // switch back to first scene for specialist creation with already created specialist and his certificates
     public void addSpecialistScene(MouseEvent event) {
         this.setScenePath(ADD_SPECIALIST_SCENE);
         this.setController(new AddSpecialistController(
