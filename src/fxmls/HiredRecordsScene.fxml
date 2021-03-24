@@ -95,10 +95,10 @@
             <children>
                 <TableView fx:id="hiredRecordsTableView" prefHeight="200.0" prefWidth="200.0">
                     <columns>
-                        <TableColumn fx:id="companyNameCol" prefWidth="324.0" text="Company Name" />
-                        <TableColumn fx:id="businessAreaCol" prefWidth="380.0" text="Business area" />
-                        <TableColumn fx:id="hiredEmployeesNumberCol" prefWidth="296.0" text="Number of hired employees" />
-                        <TableColumn minWidth="0.0" prefWidth="0.0" text="Price/day" />
+                        <TableColumn fx:id="jobNameCol" prefWidth="206.0" text="Job " />
+                        <TableColumn fx:id="companyNameCol" minWidth="0.0" prefWidth="237.0" text="Employer" />
+                        <TableColumn fx:id="businessAreaCol" prefWidth="335.0" text="Business Area" />
+                  <TableColumn fx:id="hiredEmployeesNumberCol" minWidth="0.0" prefWidth="222.0" text="Hired employees" />
                     </columns>
                 </TableView>
                 <GridPane GridPane.rowIndex="1">

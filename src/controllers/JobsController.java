@@ -68,4 +68,24 @@ public class JobsController extends HomepageController implements Initializable 
             this.switchScene(event);
         }
     }
+
+    public void hireSpecialistsScene(MouseEvent event) {
+        // User need to select an employer, who will hire specialists
+        if (jobsTableView.getSelectionModel().getSelectedItem() == null) {
+            this.showErrorPopUp("Select job", "Select job from table, where you want to sign specialists");
+        } else {
+            Job selectedJob = jobsTableView.getSelectionModel().getSelectedItem();
+
+            this.setScenePath(HIRE_SPECIALISTS_SCENE);
+            this.setController(new HireSpecialistsController(
+                    this.getSpecialistObservableList(),
+                    this.getEmployerObservableList(),
+                    this.getJobsObservableList(),
+                    this.getHiringRecordObservableList(),
+                    selectedJob
+            ));
+
+            this.switchScene(event);
+        }
+    }
 }

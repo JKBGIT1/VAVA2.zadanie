@@ -37,7 +37,7 @@ public class DetailJobController extends HomepageController implements Initializ
         labelJobName.setText(this.selectedJob.getJobName());
         labelType.setText(this.selectedJob.getSpecialistType());
         labelPrice.setText(String.valueOf(this.selectedJob.getPrice()));
-        labelEmployerName.setText(this.selectedJob.getEmployerName());
+        labelEmployerName.setText(this.selectedJob.getEmployer().getName());
         labelExperience.setText(String.valueOf(this.selectedJob.getExperience()));
         labelHighestEducation.setText(this.selectedJob.getHighestEducation());
         labelJobDescription.setText(this.selectedJob.getJobDescription());

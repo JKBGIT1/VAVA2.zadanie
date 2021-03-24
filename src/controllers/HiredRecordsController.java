@@ -21,7 +21,7 @@ public class HiredRecordsController extends HomepageController implements Initia
     @FXML
     private TableView<HiredRecord> hiredRecordsTableView;
     @FXML
-    private TableColumn<HiredRecord, String> companyNameCol, businessAreaCol;
+    private TableColumn<HiredRecord, String> companyNameCol, businessAreaCol, jobNameCol;
     @FXML
     private TableColumn<HiredRecord, Integer> hiredEmployeesNumberCol;
 
@@ -36,15 +36,21 @@ public class HiredRecordsController extends HomepageController implements Initia
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // map table columns on methods from HiredRecord, to get their values
+        // map table columns on methods from HiredRecord or Job object in HiredRecord, to get needed values
         // inspiration https://stackoverflow.com/questions/14413040/converting-integer-to-observablevalueinteger-in-javafx
         // inspiration https://stackoverflow.com/questions/25204068/how-do-i-point-a-propertyvaluefactory-to-a-value-of-a-map
+        jobNameCol.setCellValueFactory(
+                data -> new ReadOnlyStringWrapper(data.getValue().getJob().getJobName())
+        );
         companyNameCol.setCellValueFactory(
-                data -> new ReadOnlyStringWrapper(data.getValue().getEmployer().getName()));
+                data -> new ReadOnlyStringWrapper(data.getValue().getJob().getEmployer().getName())
+        );
         businessAreaCol.setCellValueFactory(
-                data -> new ReadOnlyStringWrapper(data.getValue().getEmployer().getBusinessArea()));
+                data -> new ReadOnlyStringWrapper(data.getValue().getJob().getEmployer().getBusinessArea())
+        );
         hiredEmployeesNumberCol.setCellValueFactory(
-                data -> new SimpleIntegerProperty(data.getValue().getHiredEmployeesNumber()).asObject());
+                data -> new SimpleIntegerProperty(data.getValue().getHiredEmployeesNumber()).asObject()
+        );
 
         hiredRecordsTableView.setItems(this.getHiringRecordObservableList());
     }

@@ -3,20 +3,20 @@ package models;
 import javafx.collections.ObservableList;
 
 public class HiredRecord {
-    private Employer employer;
+    private Job job;
     private ObservableList<Specialist> hiredSpecialists;
 
-    public HiredRecord(Employer employer, ObservableList<Specialist> hiredSpecialists) {
-        this.employer = employer;
+    public HiredRecord(Job job, ObservableList<Specialist> hiredSpecialists) {
+        this.job = job;
         this.hiredSpecialists = hiredSpecialists;
     }
 
-    public Employer getEmployer() {
-        return employer;
+    public Job getJob() {
+        return job;
     }
 
-    public void setEmployer(Employer employer) {
-        this.employer = employer;
+    public void setJob(Job job) {
+        this.job = job;
     }
 
     public ObservableList<Specialist> getHiredSpecialists() {

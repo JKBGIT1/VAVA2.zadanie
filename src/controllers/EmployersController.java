@@ -94,27 +94,6 @@ public class EmployersController extends HomepageController implements Initializ
         }
     }
 
-    // Employer wants to hire specialists
-    public void hireSpecialistsScene(MouseEvent event) {
-        // User need to select an employer, who will hire specialists
-        if (employersTableView.getSelectionModel().getSelectedItem() == null) {
-            this.showErrorPopUp("Select employer", "Select employer from table, who wants to hire specialists.");
-        } else {
-            Employer selectedEmployer = employersTableView.getSelectionModel().getSelectedItem();
-
-            this.setScenePath(HIRE_SPECIALISTS_SCENE);
-            this.setController(new HireSpecialistsController(
-                    this.getSpecialistObservableList(),
-                    this.getEmployerObservableList(),
-                    this.getJobsObservableList(),
-                    this.getHiringRecordObservableList(),
-                    selectedEmployer
-            ));
-
-            this.switchScene(event);
-        }
-    }
-
     // switch to scene where user will be able to add new employer
     public void addEmployerScene(MouseEvent event) {
         this.setScenePath(ADD_EMPLOYER_SCENE);

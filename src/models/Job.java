@@ -1,30 +1,30 @@
 package models;
 
 public class Job {
-    private String employerName;
     private String jobName;
     private String specialistType;
     private int experience;
     private double price;
     private String highestEducation;
     private String jobDescription;
+    private Employer employer;
 
-    public Job(String employerName, String jobName, String specialistType, int experience, double price, String highestEducation, String jobDescription) {
-        this.employerName = employerName;
+    public Job(
+            String jobName,
+            String specialistType,
+            int experience,
+            double price,
+            String highestEducation,
+            String jobDescription,
+            Employer employer
+    ) {
         this.jobName = jobName;
         this.specialistType = specialistType;
         this.experience = experience;
         this.price = price;
         this.highestEducation = highestEducation;
         this.jobDescription = jobDescription;
-    }
-
-    public String getEmployerName() {
-        return employerName;
-    }
-
-    public void setEmployerName(String employerName) {
-        this.employerName = employerName;
+        this.employer = employer;
     }
 
     public String getJobName() {
@@ -73,5 +73,13 @@ public class Job {
 
     public void setJobDescription(String jobDescription) {
         this.jobDescription = jobDescription;
+    }
+
+    public Employer getEmployer() {
+        return employer;
+    }
+
+    public void setEmployer(Employer employer) {
+        this.employer = employer;
     }
 }

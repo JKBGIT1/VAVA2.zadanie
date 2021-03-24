@@ -60,9 +60,9 @@ public class DetailHiredRecordController extends HomepageController implements I
         // display hired specialists in table
         specialistTableView.setItems(this.getHiredRecord().getHiredSpecialists());
         // display information about employer
-        companyNameLabel.setText(this.getHiredRecord().getEmployer().getName());
-        businessAreaLabel.setText(this.getHiredRecord().getEmployer().getBusinessArea());
-        logoImageView.setImage(this.getHiredRecord().getEmployer().getLogo());
+        companyNameLabel.setText(this.getHiredRecord().getJob().getEmployer().getName());
+        businessAreaLabel.setText(this.getHiredRecord().getJob().getEmployer().getBusinessArea());
+        logoImageView.setImage(this.getHiredRecord().getJob().getEmployer().getLogo());
     }
 
     public void dismissSpecialist() {
@@ -73,6 +73,11 @@ public class DetailHiredRecordController extends HomepageController implements I
                     "You need to select specialist, which you want to dismiss."
             );
         } else {
+            // Decrease total number of employees for employer
+            this.getHiredRecord().getJob().getEmployer().setEmployeesNumber(
+                    this.getHiredRecord().getJob().getEmployer().getEmployeesNumber() - 1
+            );
+
             Specialist selectedSpecialist = specialistTableView.getSelectionModel().getSelectedItem();
 
             // Remove specialists from lists

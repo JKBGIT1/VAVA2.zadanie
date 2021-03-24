@@ -28,7 +28,7 @@ public class HireSpecialistsController extends HomepageController implements Ini
     @FXML
     private TableColumn<Specialist, Boolean> allHiredCol, hiredHiredCol;
 
-    private Employer selectedEmployer;
+    private Job selectedJob;
     private ObservableList<Specialist> hiredSpecialistsList;
 
     public HireSpecialistsController(
@@ -36,19 +36,19 @@ public class HireSpecialistsController extends HomepageController implements Ini
             ObservableList<Employer> employerObservableList,
             ObservableList<Job> jobsObservableList,
             ObservableList<HiredRecord> hiringRecordObservableList,
-            Employer employer
+            Job job
     ) {
         super(specialistObservableList, employerObservableList, jobsObservableList, hiringRecordObservableList);
-        this.selectedEmployer = employer;
+        this.selectedJob = job;
         this.hiredSpecialistsList = FXCollections.observableArrayList();
     }
 
-    public Employer getSelectedEmployer() {
-        return selectedEmployer;
+    public Job getSelectedJob() {
+        return selectedJob;
     }
 
-    public void setSelectedEmployer(Employer selectedEmployer) {
-        this.selectedEmployer = selectedEmployer;
+    public void setSelectedJob(Job selectedJob) {
+        this.selectedJob = selectedJob;
     }
 
     public ObservableList<Specialist> getHiredSpecialistsList() {
@@ -71,7 +71,7 @@ public class HireSpecialistsController extends HomepageController implements Ini
         hiredSpecialistsTableView.setItems(this.getHiredSpecialistsList());
     }
 
-    public void backToEmployersScene(MouseEvent event) {
+    public void backToJobsScene(MouseEvent event) {
         // free specialists, who were selected for hiring
         for (Specialist specialist : this.getHiredSpecialistsList()) {
             this.getSpecialistObservableList().remove(specialist);
@@ -79,7 +79,7 @@ public class HireSpecialistsController extends HomepageController implements Ini
             this.getSpecialistObservableList().add(specialist);
         }
 
-        this.employersScene(event);
+        this.jobsScene(event);
     }
 
     public void dismissSpecialist() {
@@ -128,12 +128,17 @@ public class HireSpecialistsController extends HomepageController implements Ini
                     "You have to hire at least one specialist."
             );
         } else {
+            // Increase current number of employees for employer
+            this.getSelectedJob().getEmployer().setEmployeesNumber(
+                    this.getSelectedJob().getEmployer().getEmployeesNumber() + this.getHiredSpecialistsList().size()
+            );
+
             // add new record about hiring to ObservableList with all HiredRecords
             this.getHiringRecordObservableList().add(new HiredRecord(
-                    this.getSelectedEmployer(),
+                    this.getSelectedJob(),
                     this.getHiredSpecialistsList()
             ));
-            this.employersScene(event);
+            this.jobsScene(event);
         }
     }
 }

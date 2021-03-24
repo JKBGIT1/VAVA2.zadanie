@@ -64,13 +64,13 @@ public class CreateJobController extends HomepageController implements Initializ
 
             // add newly created job to list with all jobs
             this.getJobsObservableList().add(new Job(
-                    this.selectedEmployer.getName(),
                     jobName,
                     specialistType,
                     experience,
                     price,
                     highestEducation,
-                    jobDescription
+                    jobDescription,
+                    this.selectedEmployer
             ));
 
             // go back to employers scene
